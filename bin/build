@@ -6,12 +6,12 @@ version="1.0.0.beta2"
 locale="en"
 
 main() {
-  # install_hanami
-  generate_docs
+  # install_hanami &&
+    generate_docs
 }
 
 install_hanami() {
-  local target="vendor"
+  local target="gems"
 
   echo "Installing Hanami $version"
 
@@ -19,11 +19,11 @@ install_hanami() {
     rm -rf $target
   fi
 
-  gem install --prerelease --force --install-dir=$target hanami hanami-model $version
+  gem install --prerelease --force --install-dir=$target hanami hanami-model
 }
 
 generate_docs() {
-  local sources="vendor/gems/hanami*/lib/**/*"
+  local sources="gems/gems/hanami*/lib/**/*"
   local title="Hanami Docs $version"
 
   # yardoc
@@ -34,7 +34,7 @@ generate_docs() {
   #   # --no-private \ # Exclude methods with @api private
   #   # --title="$title" \ # HTML page title
   #   vendor/gems/hanami*/lib/**/*
-  yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" vendor/gems/hanami*/lib/**/*
+  yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" --template-path . --template template $sources
 }
 
 main

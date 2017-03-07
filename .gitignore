@@ -14,7 +14,7 @@
 /node_modules
 
 # Ignore Vendored gems
-/vendor
+/gems
 
 # Ignore output docs
 /doc
