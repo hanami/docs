@@ -10,6 +10,9 @@
 # Ignore the build directory
 /build
 
+# Ignore Node.js modules
+/node_modules
+
 # Ignore cache
 /.sass-cache
 /.cache

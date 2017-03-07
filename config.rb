@@ -23,6 +23,10 @@ configure :development do
   activate :livereload
 end
 
+set :js_dir,   'assets'
+set :css_dir,  'assets'
+set :font_dir, 'assets'
+
 ###
 # Helpers
 ###
