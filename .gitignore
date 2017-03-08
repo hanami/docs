@@ -28,3 +28,6 @@
 
 # Ignore YARD cache
 /.yardoc
+
+# Ignore log files
+/log
