@@ -13,3 +13,4 @@ gem 'middleman', '~> 4.2'
 gem 'middleman-livereload', '~> 3.4'
 
 gem 'yard'
+gem 'byebug', require: false

@@ -6,7 +6,7 @@ version="1.0.0.beta2"
 locale="en"
 
 main() {
-  # install_hanami &&
+  install_hanami &&
     generate_docs
 }
 
@@ -24,7 +24,12 @@ install_hanami() {
 
 generate_docs() {
   local sources="gems/gems/hanami*/lib/**/*"
+  local target=doc
   local title="Hanami Docs $version"
+
+  if [ -d $target ]; then
+    rm -rf $target
+  fi
 
   # yardoc
   #   --no-cache \ # Don't use cache
@@ -34,7 +39,7 @@ generate_docs() {
   #   # --no-private \ # Exclude methods with @api private
   #   # --title="$title" \ # HTML page title
   #   vendor/gems/hanami*/lib/**/*
-  yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" --template-path . --template template $sources
+  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
 }
 
 main

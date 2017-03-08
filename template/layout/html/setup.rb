@@ -46,7 +46,7 @@ def index
 end
 
 def layout
-  @nav_url = url_for_list(!(defined?(@file) && @file) || options.index ? 'class' : 'file')
+  @nav_url = url_for_list("method")
 
   @path =
     if !object || object.is_a?(String)
@@ -71,19 +71,17 @@ end
 # @return [Array<String>] core javascript files for layout
 # @since 0.7.0
 def javascripts
-  %w(js/jquery.js js/app.js)
+  %w(assets/toolkit.min.js)
 end
 
 # @return [Array<String>] core stylesheets for the layout
 # @since 0.7.0
 def stylesheets
-  %w(css/style.css css/common.css)
+  %w(assets/toolkit-minimal.min.css assets/site.css)
 end
 
 # @return [Array<Hash{Symbol=>String}>] the list of search links and drop-down menus
 # @since 0.7.0
 def menu_lists
-  [{:type => 'class', :title => 'Classes', :search_title => 'Class List'},
-    {:type => 'method', :title => 'Methods', :search_title => 'Method List'},
-    {:type => 'file', :title => 'Files', :search_title => 'File List'}]
+  [{:type => 'method', :title => '', :search_title => 'Search'}]
 end
