@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-version="1.0.0.beta2"
+version="1.0.0.beta3"
 locale="en"
 
 main() {
@@ -24,7 +24,7 @@ install_hanami() {
 
 generate_docs() {
   local sources="gems/gems/hanami*/lib/**/*"
-  local target=doc
+  local target="docs/$version"
   local title="Hanami Docs $version"
 
   if [ -d $target ]; then
