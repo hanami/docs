@@ -1,14 +1,11 @@
 <div class="source">
-  <p class="source_link">
-    Source:
-    <a href="#" class="display_source">show</a> | <a href="<%= github_url(object) %>" target="_blank" class="github_url">on GitHub</a>
+  <p class="source_link">Source:</p>
+  <p>
+    <a href="<%= github_url(object) %>" target="_blank" class="github_url">on GitHub</a>
   </p>
 
   <table class="source_code">
     <tr>
-      <td>
-        <pre class="lines"><%= "\n\n\n" %><%= h format_lines(object) %></pre>
-      </td>
       <td>
         <pre class="code"><%= html_syntax_highlight object.source %></pre>
       </td>
