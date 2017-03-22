@@ -13,5 +13,7 @@ end
 def github_url(object)
   path = object.file.sub('gems/gems/', '')
   repo, project, link = path.split '-'
-  "https://github.com/#{repo}/#{project}/blob/v#{link}#L#{object.line}"
+  line = object.line && "#L#{object.line}"
+
+  "https://github.com/#{repo}/#{project}/blob/v#{link}#{line}"
 end
