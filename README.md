@@ -4,12 +4,11 @@ API documentation for [Hanami](http://hanamirb.org) project
 
 ## Contact
 
-* Home page: http://hanamirb.org
-* Mailing List: http://hanamirb.org/mailing-list
-* API Doc: https://docs.hanamirb.org
-* Bugs/Issues: https://github.com/hanami/docs/issues
-* Chat: http://chat.hanamirb.org
-* Chat: https://gitter.im/hanami/chat
+* Home page: [http://hanamirb.org](http://hanamirb.org)
+* Mailing List: [http://hanamirb.org/mailing-list](http://hanamirb.org/mailing-list)
+* API Doc: [http://hanamirb.org](https://docs.hanamirb.org)
+* Bugs/Issues: [http://hanamirb.org/hanami/docs/issues](https://github.com/hanami/docs/issues)
+* Chat: [http://hanamirb.org/hanami/chat](https://gitter.im/hanami/chat)
 
 ## Contributing
 
