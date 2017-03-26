@@ -99,4 +99,6 @@ h2, h3, h4, h5, h6 {
   border-bottom: 1px dotted #685d9f;
 }
 
-
+.method_details_list {
+	margin: 1.7rem 0;
+}
