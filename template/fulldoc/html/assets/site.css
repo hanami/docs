@@ -84,6 +84,10 @@ pre {
 }
 
 .source_code {
+  display: none;
+}
+
+.source_code {
   border: #685d9f dotted 1px;
   background: #eee;
   font-size: 1.0rem;
@@ -95,10 +99,25 @@ pre {
   margin: 0.5rem;
 }
 
+.source .source_show {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  color: #685d9f;
+  text-decoration: none;
+}
+
+.source .source_show:hover {
+  cursor: pointer;
+  color: #48416f;
+  text-decoration: underline;
+}
+
 h2, h3, h4, h5, h6 {
   border-bottom: 1px dotted #685d9f;
 }
 
 .method_details_list {
-	margin: 1.7rem 0;
+  margin: 1.7rem 0;
 }

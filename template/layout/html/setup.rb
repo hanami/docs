@@ -71,7 +71,7 @@ end
 # @return [Array<String>] core javascript files for layout
 # @since 0.7.0
 def javascripts
-  %w(assets/toolkit.min.js)
+  %w(assets/toolkit.min.js assets/site.js)
 end
 
 # @return [Array<String>] core stylesheets for the layout
