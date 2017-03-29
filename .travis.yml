@@ -1,0 +1,6 @@
+language: ruby
+sudo: required
+script:
+  - bash ./scripts/deploy-to-gh-pages.sh
+rvm:
+  - 2.3

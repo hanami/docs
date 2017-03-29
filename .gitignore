@@ -18,6 +18,7 @@
 
 # Ignore output docs
 /doc
+/docs
 
 # Ignore cache
 /.sass-cache
