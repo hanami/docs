@@ -121,3 +121,25 @@ h2, h3, h4, h5, h6 {
 .method_details_list {
   margin: 1.7rem 0;
 }
+
+/* Navbar */
+
+.navbar {
+  background-color: white;
+  font-family: Roboto;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: black !important;
+}
+
+.navbar-brand {
+  color: black !important;
+}
+
+.hanami-logo {
+  width: 30px;
+  height: 30px;
+}
