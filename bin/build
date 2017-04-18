@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-version="1.0.0.beta3"
+version="1.0.0"
 locale="en"
 
 main() {
