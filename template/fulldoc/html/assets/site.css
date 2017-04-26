@@ -78,25 +78,19 @@ h1 {
 
 /* code examples */
 pre {
-  border: #685d9f dotted 1px;
   background: #eee;
-  font-size: 1.0rem;
+  background-color: #fdfdfd;
+  padding: 10.5px;
+  margin: 0 0 11px;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #ccc;
 }
 
 .source_code {
   display: none;
-}
-
-.source_code {
-  border: #685d9f dotted 1px;
-  background: #eee;
-  font-size: 1.0rem;
-}
-
-.source_code pre {
-  border: none;
-  font-size: 1.0rem;
-  margin: 0.5rem;
 }
 
 .source .source_show {
