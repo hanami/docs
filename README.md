@@ -6,7 +6,7 @@ API documentation for [Hanami](http://hanamirb.org) project
 
 * Home page: [http://hanamirb.org](http://hanamirb.org)
 * Mailing List: [http://hanamirb.org/mailing-list](http://hanamirb.org/mailing-list)
-* API Doc: [http://hanamirb.org](http://hanamirb.org)
+* API Doc: [http://www.rubydoc.info/gems/hanami](http://www.rubydoc.info/gems/hanami)
 * Bugs/Issues: [http://hanamirb.org/hanami/docs/issues](https://github.com/hanami/docs/issues)
 * Chat: [http://hanamirb.org/hanami/chat](https://gitter.im/hanami/chat)
 
