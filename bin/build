@@ -5,10 +5,22 @@ IFS=$'\n\t'
 locale="en"
 
 main() {
+  generate_index
+
   while read version; do
     install_hanami_gems $version
     generate_docs $version
   done < versions
+}
+
+generate_index() {
+  local latest_stable_version=$(cat versions | grep -v '[rc|beta]' | sort -r | head -n 1)
+  local template=index-template.html
+  local target=docs/index.html
+
+  sed \
+    -e "s/\${latest_stable_version}/$latest_stable_version/" \
+    $template > $target
 }
 
 install_hanami_gems() {
