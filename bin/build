@@ -35,7 +35,7 @@ install_hanami_gems() {
     rm -rf $target
   fi
 
-  gem install --prerelease --force --install-dir=$target hanami:$version hanami-model:$version
+  gem install --prerelease --force --no-rdoc --no-ri --norc --install-dir=$target hanami:$version hanami-model:$version
 }
 
 generate_docs() {
