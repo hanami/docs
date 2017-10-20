@@ -40,7 +40,7 @@ generate_docs() {
   local version=$1
   local sources="gems/gems/hanami*/lib/**/*"
   local target="docs/$version"
-  local title="Hanami API docs | $version"
+  local title="Hanami API docs | v$version"
 
   if [ -d $target ]; then
     rm -rf $target
