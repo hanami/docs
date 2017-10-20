@@ -54,7 +54,7 @@ generate_docs() {
   #   # --no-private \ # Exclude methods with @api private
   #   # --title="$title" \ # HTML page title
   #   vendor/gems/hanami*/lib/**/*
-  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=README_DOCS.md --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
+  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=source/README.md --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
 }
 
 main
