@@ -18,6 +18,8 @@ generate_index() {
   local template=index-template.html
   local target=docs/index.html
 
+  mkdir -p docs
+
   sed \
     -e "s/\${latest_stable_version}/$latest_stable_version/" \
     $template > $target
