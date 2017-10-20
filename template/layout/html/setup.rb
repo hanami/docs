@@ -59,6 +59,11 @@ def layout
       object.path
     end
 
+  @hanami_version_options = File.readlines("versions").reverse.map do |version|
+    version = version.chomp
+    "<option value='/#{version}'>v#{version}</option>"
+  end
+
   erb(:layout)
 end
 

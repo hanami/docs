@@ -2,15 +2,29 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-version="1.0.0"
 locale="en"
 
 main() {
-  install_hanami &&
-    generate_docs
+  generate_index
+
+  while read version; do
+    install_hanami_gems $version
+    generate_docs $version
+  done < versions
 }
 
-install_hanami() {
+generate_index() {
+  local latest_stable_version=$(cat versions | grep -v '[rc|beta]' | sort -r | head -n 1)
+  local template=index-template.html
+  local target=docs/index.html
+
+  sed \
+    -e "s/\${latest_stable_version}/$latest_stable_version/" \
+    $template > $target
+}
+
+install_hanami_gems() {
+  local version=$1
   local target="gems"
 
   echo "Installing Hanami $version"
@@ -19,13 +33,14 @@ install_hanami() {
     rm -rf $target
   fi
 
-  gem install --prerelease --force --install-dir=$target hanami hanami-model
+  gem install --prerelease --force --install-dir=$target hanami:$version hanami-model:$version
 }
 
 generate_docs() {
+  local version=$1
   local sources="gems/gems/hanami*/lib/**/*"
   local target="docs/$version"
-  local title="Hanami Docs $version"
+  local title="Hanami API docs | v$version"
 
   if [ -d $target ]; then
     rm -rf $target
@@ -39,7 +54,7 @@ generate_docs() {
   #   # --no-private \ # Exclude methods with @api private
   #   # --title="$title" \ # HTML page title
   #   vendor/gems/hanami*/lib/**/*
-  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
+  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=source/README.md --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
 }
 
 main

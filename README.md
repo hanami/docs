@@ -1,6 +1,6 @@
 # Hanami Docs
 
-API documentation for [Hanami](http://hanamirb.org) project
+API documentation for [Hanami](http://hanamirb.org).
 
 ## Contact
 
