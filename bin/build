@@ -28,7 +28,7 @@ generate_docs() {
   local version=$1
   local sources="gems/gems/hanami*/lib/**/*"
   local target="docs/$version"
-  local title="Hanami API docs $version"
+  local title="Hanami API docs | $version"
 
   if [ -d $target ]; then
     rm -rf $target
@@ -42,7 +42,7 @@ generate_docs() {
   #   # --no-private \ # Exclude methods with @api private
   #   # --title="$title" \ # HTML page title
   #   vendor/gems/hanami*/lib/**/*
-  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
+  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=README_DOCS.md --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
 }
 
 main
