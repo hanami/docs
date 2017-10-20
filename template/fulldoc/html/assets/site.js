@@ -6,7 +6,6 @@
   });
 
   var version = window.location.pathname
-    .replace("/docs", "")
     .replace(/\/$/, '')
     .match(/[\d\.\d.\d]+[beta|rc]*[\d]*/)[0];
 
