@@ -1,62 +1,67 @@
-#!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
 
-locale="en"
+require "json"
+require "pathname"
+require "fileutils"
 
-main() {
-  generate_index
+# Build API docs
+class Builder
+  def call(versions)
+    generate_index(versions)
+    generate_docs(versions)
+  end
 
-  while read version; do
-    install_hanami_gems $version
-    generate_docs $version
-  done < versions
-}
+  private
 
-generate_index() {
-  local latest_stable_version=$(cat versions | grep -v '[rc|beta]' | sort -r | head -n 1)
-  local template=index-template.html
-  local target=docs/index.html
+  def generate_index(versions)
+    latest_stable_version = versions.keys.max
+    template              = "index-template.html"
+    target                = Pathname.new("docs").join("index.html")
 
-  mkdir -p docs
+    target.dirname.mkdir unless target.dirname.exist?
 
-  sed \
-    -e "s/\${latest_stable_version}/$latest_stable_version/" \
-    $template > $target
-}
+    contents = File.read(template).gsub("${latest_stable_version}", latest_stable_version)
+    target.write(contents)
+  end
 
-install_hanami_gems() {
-  local version=$1
-  local target="gems"
+  def generate_docs(versions)
+    versions.each do |hanami_version, gems|
+      generate_docs_for_version(hanami_version, gems)
+    end
+  end
 
-  echo "Installing Hanami $version"
+  def generate_docs_for_version(hanami_version, gems)
+    target = Pathname.new("docs").join(hanami_version)
 
-  if [ -d $target ]; then
-    rm -rf $target
-  fi
+    if target.exist?
+      puts "API docs for Hanami v#{hanami_version} already generated.. skipping"
+      return
+    end
 
-  gem install --prerelease --force --no-rdoc --no-ri --install-dir=$target hanami:$version hanami-model:$version
-}
+    puts "Processing v#{hanami_version}.."
+    install_hanami_gems(gems)
+    generate_api_docs(hanami_version, target)
+  end
 
-generate_docs() {
-  local version=$1
-  local sources="gems/gems/hanami*/lib/**/*"
-  local target="docs/$version"
-  local title="Hanami API docs | v$version"
+  def install_hanami_gems(gems)
+    target = Pathname.new("gems")
+    FileUtils.remove_entry_secure(target) if target.exist?
+    target.mkdir
 
-  if [ -d $target ]; then
-    rm -rf $target
-  fi
+    gems.each do |name, version|
+      `gem uninstall -axI #{name}`
+      `gem install --prerelease --force --no-rdoc --no-ri --install-dir=#{target} #{name}:#{version}`
+    end
+  end
 
-  # yardoc
-  #   --no-cache \ # Don't use cache
-  #   --no-save  \ # Don't write cache
-  #   # --protected \ # Include Ruby protected methods
-  #   # --private \ # Include Ruby private methods
-  #   # --no-private \ # Exclude methods with @api private
-  #   # --title="$title" \ # HTML page title
-  #   vendor/gems/hanami*/lib/**/*
-  bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=source/README.md --locale=$locale --title="$title" --template-path . --template template --output-dir $target $sources
-}
+  def generate_api_docs(hanami_version, target)
+    sources = "gems/gems/hanami*/lib/**/*"
+    title = "Hanami API docs | v#{hanami_version}"
 
-main
+    `bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=source/README.md --locale=en --title="#{title}" --template-path . --template template --output-dir #{target} #{sources}`
+  end
+end
+
+versions = JSON.parse(File.read("versions.json")).freeze
+Builder.new.call(versions)

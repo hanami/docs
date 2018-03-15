@@ -59,7 +59,9 @@ def layout
       object.path
     end
 
-  @hanami_version_options = File.readlines("versions").reverse.map do |version|
+  require "json"
+  versions = JSON.parse(File.read("versions.json")).keys.sort.reverse.freeze
+  @hanami_version_options = versions.map do |version|
     version = version.chomp
     "<option value='/#{version}'>v#{version}</option>"
   end
