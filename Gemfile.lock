@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    yard (0.9.12)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  yard (~> 0.9.11)
+  yard (~> 0.9.20)
 
 BUNDLED WITH
    1.16.1
