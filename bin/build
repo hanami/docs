@@ -51,7 +51,7 @@ class Builder
 
     gems.each do |name, version|
       `gem uninstall -axI #{name}`
-      `gem install --prerelease --force --no-rdoc --no-ri --install-dir=#{target} #{name}:#{version}`
+      `gem install --prerelease --force --no-document --install-dir=#{target} #{name}:#{version}`
     end
   end
 
