@@ -16,7 +16,7 @@ API documentation for [Hanami](http://hanamirb.org).
     cd bookshelf && bundle
     bundle exec hanami server # visit http://localhost:2300
 
-Please follow along with the [Getting Started guide](https://guides.hanamirb.org/v1.3/introduction/getting-started/).
+Please follow along with the [Getting Started guide](https://guides.hanamirb.org/v2.0/introduction/getting-started).
 
 ## Contact
 
