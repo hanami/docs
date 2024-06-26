@@ -32,3 +32,6 @@
 
 # Ignore log files
 /log
+
+# Local Netlify folder
+.netlify
