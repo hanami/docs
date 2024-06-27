@@ -60,7 +60,7 @@ class Builder
     sources = "gems/gems/hanami*/lib/**/*"
     title = "Hanami API docs | v#{hanami_version}"
 
-    `bundle exec yardoc --no-cache --no-save --protected --private --no-api private --markup markdown --readme=source/README.md --locale=en --title="#{title}" --output-dir #{target} #{sources}`
+    `bundle exec yardoc --no-cache --no-save --protected --private --markup markdown --readme=source/README.md --locale=en --title="#{title}" --output-dir #{target} #{sources}`
   end
 end
 
