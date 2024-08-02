@@ -19,4 +19,4 @@ API documentation for [Hanami](http://hanamirb.org).
 
 ## Copyright
 
-Copyright © 2014-2017 Luca Guidi – Released under MIT License
+Copyright © 2014-2024 Hanami Team – Released under MIT License
